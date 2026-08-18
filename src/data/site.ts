@@ -15,6 +15,8 @@ export const siteConfig = {
   established: "2015",
   experience: "30+",
   facebook: "https://www.facebook.com/aanddroofingsolutions",
+  instagram: "https://www.instagram.com/aanddroofingandconstruction/",
+  instagramHandle: "@aanddroofingandconstruction",
   serviceAreas: [
     "Bicester",
     "Oxford",

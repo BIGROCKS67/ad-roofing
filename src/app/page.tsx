@@ -6,6 +6,7 @@ import { WorksPreview } from "@/components/home/WorksPreview";
 import { Process } from "@/components/home/Process";
 import { WhyUs } from "@/components/home/WhyUs";
 import { Testimonials } from "@/components/home/Testimonials";
+import { Instagram } from "@/components/home/Instagram";
 import { CTABanner } from "@/components/ui/CTABanner";
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Process />
       <WhyUs />
       <Testimonials />
+      <Instagram />
       <CTABanner />
     </>
   );
