@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #111111;
+  --ink-soft: #1c1c1c;
+  --red: #d11b1b;
+  --red-dark: #9f2323;
+  --red-deep: #7a1a1a;
+  --mute: #6b6560;
+  --mute-light: #9a948c;
+  --paper: #f4f1ec;
+  --line: #ddd6cc;
+  --white: #ffffff;
+  --background: var(--paper);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-red-deep: var(--red-deep);
+  --color-mute: var(--mute);
+  --color-mute-light: var(--mute-light);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-barlow);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+textarea {
+  font-size: max(16px, 1rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background: var(--red);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-barlow), system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}

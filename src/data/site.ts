@@ -1,0 +1,33 @@
+export const siteConfig = {
+  name: "A&D Roofing & Construction",
+  legalName: "A&D Roofing & Construction Limited",
+  previousName: "A&D Roofing Solutions Limited",
+  companyNumber: "09839093",
+  tagline: "Roofing and construction. Same team. Same standard.",
+  description:
+    "A&D Roofing & Construction — Adam and Dan in Bicester. Roof repairs and replacements, extensions, renovations and new builds across Oxfordshire.",
+  url: "https://aanddroofingsolutions.com",
+  phone: "07834 478550",
+  email: "adroofingsolutions@gmail.com",
+  address: "4 Willows Gate, Stratton Audley, Bicester, Oxfordshire OX27 9AU",
+  town: "Bicester",
+  county: "Oxfordshire",
+  established: "2015",
+  experience: "30+",
+  facebook: "https://www.facebook.com/aanddroofingsolutions",
+  serviceAreas: [
+    "Bicester",
+    "Oxford",
+    "Banbury",
+    "Kidlington",
+    "Oxfordshire",
+  ],
+  nav: [
+    { label: "Home", href: "/" },
+    { label: "Roofing", href: "/roofing" },
+    { label: "Construction", href: "/construction" },
+    { label: "Work", href: "/work" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ],
+} as const;
