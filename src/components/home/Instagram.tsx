@@ -12,34 +12,41 @@ declare global {
 }
 
 function processEmbed() {
-  document.querySelectorAll<HTMLElement>(".ig-embed").forEach((el) => {
-    el.style.width = "100%";
-    el.style.maxWidth = "100%";
-    el.style.minWidth = "100%";
-  });
   window.instgrm?.Embeds.process();
-  document.querySelectorAll<HTMLIFrameElement>(".ig-embed iframe").forEach((frame) => {
-    frame.style.width = "100%";
-    frame.style.maxWidth = "100%";
-    frame.style.minWidth = "100%";
-  });
+}
+
+function fitCard() {
+  const card = document.querySelector<HTMLElement>("[data-ig-card]");
+  const frame = document.querySelector<HTMLElement>(
+    "[data-ig-card] iframe, [data-ig-card] .instagram-media",
+  );
+  if (!card || !frame) return;
+  const width = Math.round(frame.getBoundingClientRect().width);
+  if (width >= 280) {
+    card.style.width = `${width}px`;
+  }
 }
 
 export function Instagram() {
   useEffect(() => {
     processEmbed();
-    const t1 = window.setTimeout(processEmbed, 800);
-    const t2 = window.setTimeout(processEmbed, 1800);
+    const t1 = window.setTimeout(() => {
+      processEmbed();
+      fitCard();
+    }, 800);
+    const t2 = window.setTimeout(fitCard, 1800);
+    const t3 = window.setTimeout(fitCard, 3200);
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
+      window.clearTimeout(t3);
     };
   }, []);
 
   return (
-    <section className="bg-ink py-16 sm:py-24">
+    <section id="instagram" className="bg-ink py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,540px)] lg:gap-16">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
           <FadeIn className="lg:sticky lg:top-28">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-red">
               Instagram
@@ -64,8 +71,11 @@ export function Instagram() {
             </a>
           </FadeIn>
 
-          <FadeIn delay={0.08} className="w-full min-w-0 lg:justify-self-end">
-            <div className="mx-auto w-full max-w-[540px] overflow-hidden">
+          <FadeIn delay={0.08} className="min-w-0">
+            <div
+              data-ig-card
+              className="mx-auto w-[326px] max-w-full overflow-hidden lg:mx-0"
+            >
               <blockquote
                 className="instagram-media ig-embed"
                 data-instgrm-permalink="https://www.instagram.com/aanddroofingandconstruction/?utm_source=ig_embed&utm_campaign=loading"
@@ -87,7 +97,10 @@ export function Instagram() {
       <Script
         src="https://www.instagram.com/embed.js"
         strategy="lazyOnload"
-        onLoad={processEmbed}
+        onLoad={() => {
+          processEmbed();
+          fitCard();
+        }}
       />
     </section>
   );
